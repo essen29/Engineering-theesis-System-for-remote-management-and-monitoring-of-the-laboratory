@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="rzad">
+
+<form method="post" class="formularz">
+    <label for="datepicker">Sprawdź czy zajęte:</label>
+
+    <input type="date" name="datepicker" value="{{ date_value }}"/>
+    <select id="wybor" name="timepicker">
+        {% for i in range(15) %}
+            {% if time_value == godziny[i]%}
+                <option value="{{ godziny[i] }}" selected>{{ godziny[i] }}</option>
+            {% else %}
+                <option value="{{ godziny[i] }}">{{ godziny[i] }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Wyszukaj</button>
+</form>
+
+
+
+<div class="image-container">
+    {% if budynek == "B4" %}
+        {% if pietro == 4 %}
+        <img src="/B4_4" alt="Zdjecie">
+        <a href="/53/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 53 in zajete_sale else 'wolny-button'}}" 
+            style="top: 116px; left: 82px; padding: 63px 19px;">Sala 03</button>
+        </a>
+        <a href="/54/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 54 in zajete_sale else 'wolny-button'}}" style="top: 174px; left: 280px; padding: 53px 20px;">Sala 04</button>
+        </a>
+        <a href="/55/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 55 in zajete_sale else 'wolny-button'}}" style="top: 174px; left: 415px; padding: 53px 80px;">Sala 05</button>
+        </a>
+        <a href="/56/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 56 in zajete_sale else 'wolny-button'}}" style="top: 174px; left: 674px; padding: 53px 50px;">Sala 06</button>
+        </a>
+        <a href="/57/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 57 in zajete_sale else 'wolny-button'}}" style="top: 174px; left: 873px; padding: 53px 47px;">Sala 08</button>
+        </a>
+        <a href="/58/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 58 in zajete_sale else 'wolny-button'}}" style="top: -32px; left: 673px; padding: 51px 43px;">Sala 015</button>
+        </a>
+        {% elif pietro == 0 %}
+        <img src="/B4_0" alt="Zdjecie">
+        <a href="/59/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 59 in zajete_sale else 'wolny-button'}}" style="top: -27px; left: 915px; padding: 34px 40px;">Sala<br>6</button>
+        </a>
+        <a href="/60/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 60 in zajete_sale else 'wolny-button'}}" style="top: 27px; left: 1190px; padding: 8px 20px;">Sala<br>8</button>
+        </a>
+        <a href="/61/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 61 in zajete_sale else 'wolny-button'}}" style="top: 192px; left: 1050px; padding: 34px 7px;">Sala<br>12</button>
+        </a>
+        <a href="/62/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 62 in zajete_sale else 'wolny-button'}}" style="top: 192px; left: 980px; padding: 34px 7px;">Sala<br>13</button>
+        </a>
+        <a href="/63/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 63 in zajete_sale else 'wolny-button'}}" style="top: 243px; left: 705px; padding: 10px 42px;">Sala<br>14c</button>
+        </a>
+        <a href="/64/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 64 in zajete_sale else 'wolny-button'}}" style="top: 192px; left: 360px; padding: 37px 110px;">Sala<br>15</button>
+        </a>
+        {% elif pietro == 1 %}
+        <img src="/B4_1" alt="Zdjecie">
+        <a href="/65/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 65 in zajete_sale else 'wolny-button'}}" style="top: -34px; left: 427px; padding: 35px 77px;">Sala<br>101</button>
+        </a>
+        <a href="/66/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 66 in zajete_sale else 'wolny-button'}}" style="top: -34px; left: 1050px; padding: 34px 7px;">Sala<br>106</button>
+        </a>
+        <a href="/67/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 67 in zajete_sale else 'wolny-button'}}" style="top: 185px; left: 700px; padding: 34px 45px;">Sala<br>118</button>
+        </a>
+        <a href="/68/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 68 in zajete_sale else 'wolny-button'}}" style="top: 16px; left: 8px; padding: 98px 78px;">Sala<br>122</button>
+        </a>
+        {% elif pietro == 2 %}
+        <img src="/B4_2" alt="Zdjecie" style="margin-bottom: -50px;">
+        <a href="/69/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 69 in zajete_sale else 'wolny-button'}}" style="top: -40px; left: 840px; padding: 55px 16px;">Sala<br>204</button>
+        </a>
+        <a href="/70/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 70 in zajete_sale else 'wolny-button'}}" style="top: 246px; left: 217px; padding: 57px 105px;">Sala<br>209</button>
+        </a>
+        {% elif pietro == 3 %}
+        <img src="/B4_3" alt="Zdjecie">
+        <a href="/71/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 71 in zajete_sale else 'wolny-button'}}" style="top: -25px; left: 460px; padding: 40px 82px;">Sala<br>302</button>
+        </a>
+        <a href="/72/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 72 in zajete_sale else 'wolny-button'}}" style="top: -25px; left: 680px; padding: 40px 85px;">Sala<br>303</button>
+        </a>
+        <a href="/73/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 73 in zajete_sale else 'wolny-button'}}" style="top: 210px; left: 1048px; padding: 40px 85px;">Sala<br>308</button>
+        </a>
+        <a href="/74/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 74 in zajete_sale else 'wolny-button'}}" style="top: 212px; left: 385px; padding: 40px 85px;">Sala<br>312</button>
+        </a>
+        <a href="/75/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 75 in zajete_sale else 'wolny-button'}}" style="top: 195px; left: 235px; padding: 50px 46px;">Sala<br>313</button>
+        </a>
+        <a href="/76/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 76 in zajete_sale else 'wolny-button'}}" style="top: -36px; left: 10px; padding: 12px 85px;">Sala<br>314</button>
+        </a>
+        <a href="/77/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 77 in zajete_sale else 'wolny-button'}}" style="top: 195px; left: 9px; padding: 55px 80px;">Sala<br>314a</button>
+        </a>
+        {% endif %}
+    {% endif %}
+    
+    
+
+    {% if budynek == "B5" %}
+        {% if pietro == 1 %}
+        <img src="/B5_1" alt="Zdjecie">
+        <a href="/6/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 6 in zajete_sale else 'wolny-button'}}" style="top: 223px; left: 975px; padding: 70px 68px;">Sala 101</button>
+        </a>
+        <a href="/7/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 7 in zajete_sale else 'wolny-button'}}" style="top: 223px; left: 735px; padding: 70px 64px;">Sala 102</button>
+        </a>
+        <a href="/8/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 8 in zajete_sale else 'wolny-button'}}" style="top: 223px; left: 493px; padding: 70px 64px;">Sala 104</button>
+        </a>
+        <a href="/9/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 9 in zajete_sale else 'wolny-button'}}" style="top: -20px; left: 40px; padding: 68px 88px;">Sala 107</button>
+        </a>
+        <a href="/10/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 10 in zajete_sale else 'wolny-button'}}" style="top: -20px; left: 410px; padding: 68px 185px;">Sala 110</button>
+        </a>
+        <a href="/5/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 5 in zajete_sale else 'wolny-button'}}" style="top: 80px; left: 963px; padding: 40px 60px;"></button>
+            <button class="{{ 'zajety-button' if 5 in zajete_sale else 'wolny-button'}}" style="top: 150px; left: 1068px; padding: 35px 75px;"></button>
+            <button class="{{ 'zajety-button' if 5 in zajete_sale else 'wolny-button'}}" style="top: -20px; left: 1055px; padding: 67px 50px;">Sala 111</button>
+        </a>
+        {% elif pietro == 2 %}
+        <img src="/B5_2" alt="Zdjecie">
+        <a href="/11/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 11 in zajete_sale else 'wolny-button'}}" style="top: -28px; left: 35px; padding: 102px 93px;">Sala 201</button>
+            <button class="{{ 'zajety-button' if 11 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 35px; padding: 90px 107px;"></button>
+            <button class="{{ 'zajety-button' if 11 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 250px; padding: 40px 47px;"></button>
+        </a>
+        <a href="/12/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 12 in zajete_sale else 'wolny-button'}}" style="top: -28px; left: 495px; padding: 49px 13px;">Sala<br>204</button>
+        </a>
+        <a href="/13/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 13 in zajete_sale else 'wolny-button'}}" style="top: -28px; left: 578px; padding: 49px 13px;">Sala<br>205</button>
+        </a>
+        <a href="/14/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 14 in zajete_sale else 'wolny-button'}}" style="top: -28px; left: 661px; padding: 49px 13px;">Sala<br>206</button>
+        </a>
+        <a href="/15/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 15 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 988px; padding: 49px 120px;">Sala<br>210</button>
+        </a>
+        <a href="/16/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 16 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 825px; padding: 49px 54px;">Sala<br>212</button>
+        </a>
+        <a href="/17/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 17 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 580px; padding: 49px 94px;">Sala<br>214</button>
+        </a>
+        <a href="/18/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 18 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 415px; padding: 49px 55px;">Sala<br>215</button>
+        </a>
+        {% elif pietro == 3 %}
+        <img src="/B5_3" alt="Zdjecie">
+        <a href="/20/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 20 in zajete_sale else 'wolny-button'}}" style="top: -30px; left: 30px; padding: 45px 35px;">Sala<br>301</button>
+        </a>
+        <a href="/21/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 21 in zajete_sale else 'wolny-button'}}" style="top: -30px; left: 315px; padding: 45px 55px;">Sala<br>304</button>
+        </a>
+        <a href="/22/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 22 in zajete_sale else 'wolny-button'}}" style="top: -30px; left: 560px; padding: 45px 52px;">Sala<br>307</button>
+        </a>
+        <a href="/23/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 23 in zajete_sale else 'wolny-button'}}" style="top: 212px; left: 884px; padding: 49px 155px;">Sala<br>311</button>
+        </a>
+        <a href="/24/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 24 in zajete_sale else 'wolny-button'}}" style="top: 212px; left: 722px; padding: 49px 53px;">Sala<br>313</button>
+        </a>
+        <a href="/25/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 25 in zajete_sale else 'wolny-button'}}" style="top: 212px; left: 640px; padding: 49px 13px;">Sala<br>314</button>
+        </a>
+        <a href="/26/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 26 in zajete_sale else 'wolny-button'}}" style="top: 212px; left: 399px; padding: 49px 13px;">Sala<br>317</button>
+        </a>
+        {% elif pietro == 4 %}
+        <img src="/B5_4" alt="Zdjecie">
+        <a href="/27/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 27 in zajete_sale else 'wolny-button'}}" style="top: 147px; left: 26px; padding: 12px 47px;">Sala 401</button>
+        </a>
+        <a href="/28/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 28 in zajete_sale else 'wolny-button'}}" style="top: -31px; left: 24px; padding: 46px 199px;">Sala<br>404</button>
+        </a>
+        <a href="/29/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 29 in zajete_sale else 'wolny-button'}}" style="top: 214px; left: 800px; padding: 48px 200px;">Sala<br>410</button>
+        </a>
+        {% elif pietro == 5 %}
+        <img src="/B5_5" alt="Zdjecie">
+        <a href="/30/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 30 in zajete_sale else 'wolny-button'}}" style="top: -31px; left: 1080px; padding: 50px 70px;">Sala<br>509</button>
+        </a>
+        <a href="/31/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 31 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 1061px; padding: 51px 80px;">Sala<br>510</button>
+        </a>
+        <a href="/32/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 32 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 978px; padding: 51px 13px;">Sala<br>511</button>
+        </a>
+        <a href="/33/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 33 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 727px; padding: 51px 97px;">Sala<br>512</button>
+        </a>
+        <a href="/34/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 34 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 560px; padding: 51px 55px;">Sala<br>513</button>
+        </a>
+        <a href="/35/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 35 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 390px; padding: 51px 56px;">Sala<br>514</button>
+        </a>
+        {% elif pietro == 6 %}
+        <img src="/B5_6" alt="Zdjecie">
+        <a href="/36/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 36 in zajete_sale else 'wolny-button'}}" style="top: -31px; left: 18px; padding: 48px 160px;">Sala<br>601</button>
+        </a>
+        <a href="/37/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 37 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 1053px; padding: 48px 77px;">Sala<br>608</button>
+        </a>
+        <a href="/38/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 38 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 724px; padding: 48px 136px;">Sala<br>609</button>
+        </a>
+        <a href="/39/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 39 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 395px; padding: 48px 136px;">Sala<br>610</button>
+        </a>
+        <a href="/40/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 40 in zajete_sale else 'wolny-button'}}" style="top: 220px; left: 20px; padding: 48px 77px;">Sala<br>612</button>
+        </a>
+        {% elif pietro == 7 %}
+        <img src="/B5_7" alt="Zdjecie">
+        <a href="/41/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 41 in zajete_sale else 'wolny-button'}}" style="top: -32px; left: 18px; padding: 47px 243px;">Sala<br>702</button>
+        </a>
+        <a href="/42/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 42 in zajete_sale else 'wolny-button'}}" style="top: -32px; left: 1064px; padding: 47px 68px;">Sala<br>707</button>
+        </a>
+        <a href="/43/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 43 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 883px; padding: 48px 158px;">Sala<br>709</button>
+        </a>
+        <a href="/44/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 44 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 231px; padding: 2px 55px;">Sala<br>714</button>
+        </a>
+        {% elif pietro == 8 %}
+        <img src="/B5_8" alt="Zdjecie">
+        <a href="/45/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 45 in zajete_sale else 'wolny-button'}}" style="top: -30px; left: 25px; padding: 47px 75px;">Sala<br>801</button>
+        </a>
+        <a href="/46/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 46 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 1043px; padding: 47px 75px;">Sala<br>810</button>
+        </a>
+        <a href="/47/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 47 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 880px; padding: 47px 53px;">Sala<br>811</button>
+        </a>
+        <a href="/48/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 48 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 637px; padding: 47px 53px;">Sala<br>813</button>
+        </a>
+        <a href="/49/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 49 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 557px; padding: 47px 12px;">Sala<br>815</button>
+        </a>
+        <a href="/50/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 50 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 476px; padding: 47px 12px;">Sala<br>816</button>
+        </a>
+        <a href="/51/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 51 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 396px; padding: 47px 12px;">Sala<br>817</button>
+        </a>
+        <a href="/52/{{date_value}}/{{time_value}}">
+            <button class="{{ 'zajety-button' if 52 in zajete_sale else 'wolny-button'}}" style="top: 215px; left: 25px; padding: 47px 76px;">Sala<br>819</button>
+        </a>
+        {% elif pietro == 9 %}
+        <h2 style="margin-bottom: 60px; text-align: center; color: red;">Na tym piętrze nie ma żadnych sal do rezerwacji</h2>
+        <img src="/B5_9" alt="Zdjecie">
+        {% endif %}
+    {% endif %}
+    
+    </div>
+</div>
+{% endblock %}

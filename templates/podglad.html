@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a>Podgląd sali nr {{ numer_sali }}</h2>
+<br>
+<img id="video_feed" src="{{ url_for('video_feed') }}">
+
+{% endblock %}

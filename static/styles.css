@@ -1,0 +1,86 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.zajety-button {
+    font-size: 28px;
+    position: absolute;
+    background-color: transparent;
+    color: red;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.wolny-button {
+    font-size: 28px;
+    position: absolute;
+    background-color: transparent;
+    color: green;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rzad{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    margin-top: -100px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    margin-top: -50px;
+}
+
+.formularz{
+    margin: auto;
+}
+
+area {
+    display: block;
+    position: relative;
+    outline: none; /* Usunięcie domyślnego obramowania obszaru klikalnego */
+}
+
+.czcionka-przywitanie{
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: sans-serif;
+    margin: auto;
+    text-align: center;
+}
+
+.sala-button {
+    background-color: red;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Rozłożenie elementów na całej dostępnej przestrzeni */
+}
+
+.left-text, .right-text {
+    width: 55%; /* Szerokość elementów (lewa i prawa część) */
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd; /* Dodaj obramowanie między komórkami */
+}
+
+.alert{
+    width: 80%;
+}
+
+.center-table{
+    margin: auto;
+}

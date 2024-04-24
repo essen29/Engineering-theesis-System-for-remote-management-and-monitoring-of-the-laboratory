@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="text-align: center; margin: auto;">
+
+{% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-{{ category }}" style="margin-left: 10%;" role="alert">
+        {{ message | safe }}
+    </div>
+{% endfor %}
+
+<h1 >Wczytaj plik CSV</h1>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <br>
+    <input class="form-control" type="file" name="csv_file" accept=".csv" required>
+    <br>
+    <input class="input-group-text" style="margin-left: 37%;" type="submit" value="Wczytaj">
+</form>
+</div>
+
+{% endblock %}

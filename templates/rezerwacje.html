@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="center-table">
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-{{ category }}" role="alert">
+        {{ message | safe }}
+    </div>
+    {% endfor %}
+    
+    
+    {% if results == [] %}
+        <h1>Brak zarezerwowanych terminow</h1>
+    {% else %}
+    <h1>Twoje rezerwacje</h1>
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded center-table">
+            <table>
+                <tr>
+                    <th>Od</th>
+                    <th>Do</th>
+                    <th>Cel rezerwacji</th>
+                    <th>Budynek</th>
+                    <th>Piętro</th>
+                    <th>Numer sali</th>
+                </tr>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result[2] }}</td>
+                    <td>{{ result[3] }}</td>
+                    <td>{{ result[7] }}</td>
+                    <td>{{ result[4] }}</td>
+                    <td>{{ result[5] }}</td>
+                    <td>{{ result[6] }}</td>
+                    <td>
+                    <form action="{{ url_for('usun_rekord', id=result[0]) }}" method="post">
+                        <input type="hidden" name="id" value="{{ result[0] }}">
+                        <button type="submit" class="btn btn-danger btn-sm">X</button>
+                    </form>
+                </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

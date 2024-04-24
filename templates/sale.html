@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="left-text">
+    <h1>Zarezerwuj sale nr {{ numer_sali }}</h1>
+    <br>
+    <form method="post">
+        <label for="datepicker">Od:</label>
+        <input type="date" name="data_od" value="{{ data }}"/>
+
+        <select id="wybor" name="czas_od">
+            {% for i in range(15) %}
+                {% if czas == godziny[i]%}
+                    <option value="{{ godziny[i] }}" selected>{{ godziny[i] }}</option>
+                {% else %}
+                    <option value="{{ godziny[i] }}">{{ godziny[i] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        
+        <br>
+        <br>
+
+        <label for="datepicker">Do:</label>
+        <input type="date" name="data_do" value="{{ data }}"/>
+
+        <select id="wybor" name="czas_do">
+            {% for i in range(15) %}
+                {% if czas == godziny[i]%}
+                    <option value="{{ godziny[i] }}" selected>{{ godziny[i] }}</option>
+                {% else %}
+                    <option value="{{ godziny[i] }}">{{ godziny[i] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label for="datepicker">Cel rezerwacji:</label>
+        {% if typ_sali == "Badawczo-Dydaktyczny" %}
+            <select id="powod" name="powod">
+                <option value="Dydaktyczny">Dydaktyczny</option>
+                <option value="Badawczy">Badawczy</option>
+            </select>
+        {% else %}
+            <select id="powod" name="powod">
+                <option value="Dydaktyczny">Dydaktyczny</option>
+            </select>
+        {% endif %}
+
+        {% if id == 65 %}
+            <br><br>
+            <label for="datepicker">Wybierz stanowisko:</label>
+            <br>
+            <input type="checkbox" name="option1" value="value1">
+            <label for="checkbox1">Stanowisko 1 (mikroskop Titan)</label>
+
+            <br>
+
+            <input type="checkbox" name="option2" value="value2">
+            <label for="checkbox2">Stanowisko 2 (stanowisko komputerowe)</label>
+            
+        {% endif %}
+        <br><br>
+
+        <button type="submit" class="btn btn-primary">Zarezerwuj</button>
+        <a href="/podglad/{{id}}" class="btn btn-primary" style="background-color: green; margin-left: 100px;">Podgląd sali</a>
+        <br><br>
+        <label> Dostępne aparatury do badań w tej sali:</label>
+        <br>
+        <label>- Mikroskop</label>
+        <br>
+        <label>- Maszyna wytrzymałościowa</label>
+
+
+</form>
+<br/><br/>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="alert alert-{{ category }}" role="alert">
+            {{ message | safe }}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="right-text">
+    {% if id != 65 %}
+        {% if results == [] %}
+            <h1>Brak zajetych terminow</h1>
+        {% else %}
+                <h1>Zajete terminy dla sali nr {{ numer_sali }}</h1>
+                <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <table>
+                        <tr>
+                            <th>Od</th>
+                            <th>Do</th>
+                            <th>Rezerwujacy</th>
+                            <th>Cel</th>
+                        </tr>
+                        {% for result in results %}
+                        <tr>
+                            {% if result[4] == id_user %}
+                                <td><b>{{ result[0] }}</b></td>
+                                <td><b>{{ result[1] }}</b></td>
+                                <td><b>{{ result[2] }} {{ result[3] }} </b></td> 
+                                <td><b>{{ result[6] }}
+                                {% if aktualna_data > result[0] and aktualna_data < result[1] %} <a style="color: red"> &nbsp;&nbsp;Aktualnie </a> {%endif%}</b></td>
+                            {% else %}
+                                <td>{{ result[0] }}</td>
+                                <td>{{ result[1] }}</td>
+                                <td>{{ result[2] }} {{ result[3] }} </td>
+                                <td>{{ result[6] }}
+                                    {% if aktualna_data > result[0] and aktualna_data < result[1] %} <a style="color: red"><b> &nbsp;&nbsp;Aktualnie</b> </a> {%endif%}</b></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+        {% endif %}
+    {% else %}
+        {% if results65 == [] %}
+        <h1>Brak zajetych terminow</h1>
+        {% else %}
+            <h1>Zajete terminy dla sali nr {{ numer_sali }}</h1>
+            <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+                <table>
+                    <tr>
+                        <th>Od</th>
+                        <th>Do</th>
+                        <th>Rezerwujacy</th>
+                        <th>Stanowisko</th>
+                    </tr>
+                    {% for result in results65 %}
+                    <tr>
+                        {% if result[0] == id_user %}
+                            <td><b>{{ result[2] }}</b></td>
+                            <td><b>{{ result[3] }}</b></td>
+                            <td><b>{{ result[4] }} {{ result[5] }} </b></td> 
+                            <td><b>{{ result[1] }}
+                            {% if aktualna_data > result[2] and aktualna_data < result[3] %} <a style="color: red"> &nbsp;&nbsp;Aktualnie </a> {%endif%}</b></td>
+                        {% else %}
+                            <td>{{ result[2] }}</td>
+                            <td>{{ result[3] }}</td>
+                            <td>{{ result[4] }} {{ result[5] }} </td>
+                            <td>{{ result[1] }}
+                                {% if aktualna_data > result[2] and aktualna_data < result[3] %} <a style="color: red"><b> &nbsp;&nbsp;Aktualnie</b> </a> {%endif%}</b></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            
+        {% endif %}
+    {% endif %} 
+</div>
+
+
+{% endblock %}
